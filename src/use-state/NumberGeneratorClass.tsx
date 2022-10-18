@@ -23,8 +23,9 @@ export class NumberGeneratorClass extends React.Component<Props, State> {
   }
 
   render() {
+    const { generatedNumbers } = this.state;
     return <div>
-      {this.state.generatedNumbers.map(num => <div>{num}</div>)}
+      {generatedNumbers.map((num, index) => <div key={index}>{num}</div>)}
       <button type="button" onClick={() => this.generateNew()}>Generate new</button>
     </div>
   }
