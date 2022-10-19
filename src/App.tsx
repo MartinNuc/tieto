@@ -1,18 +1,24 @@
 import { useState } from 'react';
-import { Joke } from './api-requests/Joke';
 import './App.css';
-import { Dropdown } from './dropdown/Dropdown';
-import { MouseTracker } from './use-effect/mouse-moving/MouseTracker';
-import { NumberGeneratorClass } from './use-state/NumberGeneratorClass';
+import { ThemeContextProvider } from './contexts/theme-context';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { JokeCategories } from './pages/joke-categories';
+import { JokePage } from './pages/joke-page';
 
 function App() {
-  const [isVisible, setVisibility] = useState(true);
-  return <>
-    <Joke />
-    <Dropdown />
-    {isVisible && <MouseTracker />}
-    <button onClick={() => setVisibility(!isVisible)}>toggle</button>
-  </>
+
+  return <BrowserRouter>
+    <ThemeContextProvider>
+      <ul>
+        <li><Link to="/" >Categories</Link></li>
+        <li><Link to="/categories/test" >Test</Link></li>
+      </ul>
+      <Routes>
+        <Route index path="/" element={<JokeCategories />} />
+        <Route path="/categories/:category" element={<JokePage />} />
+      </Routes>
+    </ThemeContextProvider>
+  </BrowserRouter>
 }
 
 export default App;

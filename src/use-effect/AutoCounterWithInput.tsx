@@ -13,7 +13,9 @@ export const AutoCounterWithInput = () => {
   }, [incrementBy]);
 
   return <>
-    <input type="number" value={incrementBy} onChange={(e) => setIncrementBy(+e.target.value)} />
+    <input type="number"
+      value={incrementBy}
+      onChange={(e) => setIncrementBy(+e.target.value)} />
     <div>{counter}</div>
   </>
 }

@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useJoke } from "../api-requests/use-joke";
 
-export function Counter() {
-
+export const Counter: React.FC<{}> = () => {
   const [count, setCount] = useState(0);
-  const [timeoutReference, setTimeoutReference] = useState(null);
-
-  useEffect(() => {
-    const timeoutReference = setTimeout(() => console.log(), 1000)
-  }, []);
-
 
   return <div>
-    <p>{count}</p>
+    <p data-testid="counter">{count}</p>
     <button type="button" onClick={() => setCount(count + 1)}>Inc</button>
   </div>
 }

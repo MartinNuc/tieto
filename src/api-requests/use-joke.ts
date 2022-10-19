@@ -5,14 +5,20 @@ type ResponseType = {
   value: string;
 };
 
-export function useJoke() {
+type Props = {
+  category?: string;
+};
+
+export function useJoke({ category }: Props = {}) {
   const [joke, setJoke] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   async function fetchJoke() {
     setIsLoading(true);
     const response = await axios.get<ResponseType>(
-      'https://api.chucknorris.io/jokes/random'
+      `https://api.chucknorris.io/jokes/random?${
+        category ? `category=${category}` : ''
+      }`
     );
     setJoke(response.data.value);
     setIsLoading(false);
