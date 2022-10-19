@@ -6,10 +6,12 @@ export const Dropdown = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   return <>
-    <Button onClick={() => setIsDropdownVisible(!isDropdownVisible)}>
-      Toggle
+    <Button onClick={() => {
+      debugger
+      setIsDropdownVisible(!isDropdownVisible)
+    }
+    }>
+      fjsldifjs
     </Button>
-
-    {isDropdownVisible && <Content />}
   </>
 }

@@ -7,14 +7,14 @@ export const MouseTracker = () => {
   const [previousClickPosition, setPreviousClickPosition] = useState({ x: 0, y: 0 });
   const [isOnTheLeft, setIsOnTheLeft] = useState(false);
 
+  const onMouseMove = (event: MouseEvent) => {
+    console.log('event handler ', currentClickPosition);
+    setCurrentClickPosition({
+      x: event.clientX,
+      y: event.clientY
+    });
+  };
   useEffect(() => {
-    const onMouseMove = (event: MouseEvent) => {
-      console.log('event handler ', currentClickPosition);
-      setCurrentClickPosition({
-        x: event.clientX,
-        y: event.clientY
-      });
-    };
     window.addEventListener('click', onMouseMove);
 
     return () => {
